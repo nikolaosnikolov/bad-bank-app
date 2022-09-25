@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    padding: 1rem;
+    background-color: burlywood !important;
+}
+
+#home-nav,
+#createaccount-nav,
+#login-nav,
+#deposit-nav,
+#withdraw-nav,
+#alldata-nav {
+    color: rgba(0, 0, 0, .6);
+}
+
+.imageDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card-img-top {
+    height: 10rem;
+    width: 10rem;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-fluid {
+    padding: 3rem;
+}
+
+.card-header {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.inputName,
+.inputEmail,
+.inputPassword {
+    padding: 0.5rem;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px;
+}
+
+.submitButton {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 10rem;
+}
+
+.navbar-brand {
+    cursor: default;
+}
+
+#modalBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: darkgoldenrod;
+    position: relative;
+    min-width: 25rem;
+    min-height: 20rem;
+    height: 60%;
+    width: 40%;
+    border-radius: 1rem;
+}
+
+#modalTitle {
+    display: flex;
+    margin: 1rem auto 1rem 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+#modalClose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    top: 1.3rem;
+    right: 1.3rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+#modalClose:hover,
+#modalClose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#college {
+    display: flex;
+    flex-direction: row;
+}
+
+#college {
+    margin-top: 2rem;
+}
+
+#collegeIcon {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#collegeInfo {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-nav > .active > a {
+    color: red;
+}
