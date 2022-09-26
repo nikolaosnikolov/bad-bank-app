@@ -190,6 +190,12 @@ body {
     align-items: center;
 }
 
-.navbar-nav > .active > a {
-    color: red;
+.link {
+    color: white;
+    background-color: aqua;
+}
+
+.link-active {
+    color: black;
+    background-color: blueviolet;
 }

@@ -5,7 +5,6 @@ import Deposit from "./components/deposit.jsx"
 import Home from "./components/home.jsx"
 import Login from "./components/login.jsx"
 import Withdraw from "./components/withdraw.jsx"
-import NavBar from "./components/navbar.jsx";
 import { UserContext } from './context/context.jsx'
 
 function App() {
@@ -13,59 +12,54 @@ function App() {
     <>
       <BrowserRouter>
         <UserContext.Provider value={Memo}>
-          {/* <nav>
-            <NavLink id="home-nav" className="nav-link" to="/">Home</NavLink>
-            <NavLink id="createaccount-nav" className="nav-link" to="CreateAccount">Create Account</NavLink>
-            <NavLink id="deposit-nav" className="nav-link" to="deposit">Deposit</NavLink>
-            <NavLink id="withdraw-nav" className="nav-link" to="withdraw">Withdraw</NavLink>
-            <NavLink id="alldata-nav" className="nav-link" to="alldata">AllData</NavLink>
-          </nav> */}
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand">BadBank</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li style={{ position: "relative" }} className="nav-item active">
-              <NavLink id="home-nav" className="nav-link" to="/">Home</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink id="createaccount-nav" className="nav-link" to="CreateAccount">Create Account</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink id="deposit-nav" className="nav-link" to="deposit">Deposit</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink id="withdraw-nav" className="nav-link" to="withdraw">Withdraw</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink id="alldata-nav" className="nav-link" to="alldata">AllData</NavLink>
-            </li>
-          </ul>
-          <NavLink style={{
-            right: '0',
-            position: 'absolute',
-            fontSize: '1.1rem',
-          }} className="nav-link" to="login">Login</NavLink>
-          <NavLink style={{
-            right: '50px',
-            position: 'absolute',
-            fontSize: '1.1rem',
-          }} className="nav-link" to="/" onClick={() => {
-            Memo.activeUser && delete Memo.activeUser
-          }}>Logout</NavLink>
-        </div>
-      </nav>
-          
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="CreateAccount" element={<CreateAccount />} />
-            <Route path="login" element={<Login />} />
-            <Route path="deposit" element={<Deposit />} />
-            <Route path="withdraw" element={<Withdraw />} />
-            <Route path="alldata" element={<AllData />} />
-          </Routes>
+            <a className="navbar-brand">BadBank</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li style={{ position: "relative" }} className="nav-item active">
+                  <NavLink id="home-nav" className={({ isActive }) => (isActive ? "link-active" : "link")} to="/home">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink id="createaccount-nav" className={({ isActive }) => (isActive ? "link-active" : "link")} to="/CreateAccount">Create Account</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink id="deposit-nav" className={({ isActive }) => (isActive ? "link-active" : "link")} to="/deposit">Deposit</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink id="withdraw-nav" className={({ isActive }) => (isActive ? "link-active" : "link")} to="/withdraw">Withdraw</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink id="alldata-nav" className={({ isActive }) => (isActive ? "link-active" : "link")} to="/alldata">AllData</NavLink>
+                </li>
+              </ul>
+              <NavLink style={{
+                right: '0',
+                position: 'absolute',
+                fontSize: '1.1rem',
+              }} className="nav-link" to="/login">Login</NavLink>
+              <NavLink style={{
+                right: '50px',
+                position: 'absolute',
+                fontSize: '1.1rem',
+              }} className="nav-link" to="/home" onClick={() => {
+                Memo.activeUser && delete Memo.activeUser
+              }}>Logout</NavLink>
+            </div>
+          </nav>
+          <div className="container">
+            <Routes>
+                <Route path="/home" exact element={<Home />} />
+                <Route path="/CreateAccount" element={<CreateAccount />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/deposit" element={<Deposit />} />
+                <Route path="/withdraw" element={<Withdraw />} />
+                <Route path="/alldata" element={<AllData />} />
+                <Route path="*" element={<Navigate to="/home" replace/>}/>
+            </Routes>
+          </div>
         </UserContext.Provider>
       </BrowserRouter>
     </>
@@ -91,3 +85,6 @@ const Fn = {
 }
 
 export { App, Memo, Fn }
+
+
+// className="nav-link"
