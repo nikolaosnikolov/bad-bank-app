@@ -74,7 +74,8 @@ function CreateAccount() {
       <Card
         height="30rem"
         width="30rem"
-        bgcolor="primary"
+        bgcolor="light"
+        txtcolor="black"
         header="Create Account"
         status={status}
         body={show ? (
@@ -94,11 +95,11 @@ function CreateAccount() {
               disableButton(name, email, e.currentTarget.value)
             }} />
             <div style={{ width: '100%', marginLeft: '10px', color: 'red' }}>{passwordMessage}</div>
-            <button type="submit" className="btn btn-light" onClick={handleCreate} disabled={disabled}>Create Account</button>
+            <button type="submit" className="btn btn-light cabutton" onClick={handleCreate} disabled={disabled}>Create Account</button>
           </>
         ) : (
           <>
-            <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+            <button type="submit" className="btn btn-light cabutton" onClick={clearForm}>Add another account</button>
           </>
         )}
       />

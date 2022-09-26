@@ -7,8 +7,8 @@ function Login() {
     const [emailValue, setEmail] = React.useState(null)
     const [passwordValue, setPassword] = React.useState(null)
     const [status] = React.useState('')
+    const [disabled, setDisabled] = React.useState(true)
     const [show, setShow] = React.useState(true)
-    console.log('Memo', Memo)
 
     const ctx = React.useContext(UserContext);
     const authentication = () => {
@@ -18,20 +18,29 @@ function Login() {
         })
 
         if (user === undefined) {
-            console.log('User cannot be authenticated')
+            toast('User not authenticated', false)
             return
         }
 
 
         Memo.activeUser = user
-        console.log('user data', Memo.activeUser)
+        toast('Login with success', true)
         setShow(false)
-        toast('Login with success', false)
+    }
+
+    const disableButton = (email, password) => {
+        if (email === '' && password === '') {
+            setDisabled(true)
+        } else {
+            setDisabled(false)
+        }
     }
 
     const clearForm = () => {
+        setDisabled(true)
         setShow(true)
     }
+
     return (
         <Card
             height="20rem"
@@ -41,9 +50,15 @@ function Login() {
             status={status}
             body={show ? (
                 <>
-                    <input id="emailInput" placeholder="Email" onChange={(e) => setEmail(e.target.value)}></input>
-                    <input id="passwordInput" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
-                    <button onClick={authentication}>Submit</button>
+                    <input id="emailInput" className="form-control" placeholder="Email" onChange={(e) => {
+                        setEmail(e.currentTarget.value)
+                        disableButton(e.currentTarget.value, passwordValue)
+                    }}></input>
+                    <input id="passwordInput" type="password" className="form-control" placeholder="Password" onChange={(e) => {
+                        setPassword(e.currentTarget.value)
+                        disableButton(emailValue, e.currentTarget.value)
+                    }}></input>
+                    <button className="btn btn-light" onClick={authentication} disabled={disabled}>Submit</button>
                 </>
             ) : (
                 <>

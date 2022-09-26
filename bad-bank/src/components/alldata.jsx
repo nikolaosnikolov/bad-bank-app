@@ -1,5 +1,6 @@
 import { Memo, Fn } from "../App.js";
 import React from 'react'
+import { Card } from "../context/context.jsx";
 
 function AllData() {
 
@@ -19,7 +20,12 @@ function AllData() {
   
     return (
       <>
-          <table className="table">
+      <Card
+      width="40rem"
+      header="Your submissions"
+      txtcolor="black"
+      body={(
+        <table className="table">
             <thead>
               <tr>
                 <th scope="col">Date</th>
@@ -30,6 +36,8 @@ function AllData() {
             </thead>
             <tbody>{allDataReport}</tbody>
           </table>
+      )}
+      />
       </>
     );
   }

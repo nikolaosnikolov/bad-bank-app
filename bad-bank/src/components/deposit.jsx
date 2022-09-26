@@ -11,16 +11,13 @@ function Deposit() {
     const [disabled, setDisabled] = React.useState(true)
     const [wholeMoney, setWholeMoney] = React.useState(Memo.activeUser ? Memo.activeUser.balance : 0);
 
-    console.log('Memo.activeUser', Memo.activeUser)
     const depositFn = () => {
         if (isNaN(deposit)) {
             toString(deposit)
-            console.log('Error in submit: Deposit value is not a number')
             setErrorMessage('*Deposit value must be a number')
             return;
         }
         if (deposit < 0) {
-            console.log('Error in submit: User is trying to deposit negative value')
             setErrorMessage('*Deposit value must be a positive number')
             return;
         }
@@ -28,7 +25,6 @@ function Deposit() {
             setErrorMessage('')
             Memo.activeUser.balance += deposit
             setWholeMoney(Memo.activeUser.balance)
-            console.log('newDeposit', Memo.activeUser.balance)
 
             const record = {
                 datetime: new Date().toISOString().substring(0, 10),
@@ -39,11 +35,9 @@ function Deposit() {
                 email: Memo.activeUser.email,
                 uid: Memo.activeUser.uid
             }
-            console.log('record', record)
             Memo.records.push(record)
-            console.log('Memo.records', Memo.records)
         } else {
-            console.log('user must log in')
+            toast('You must log in', false)
         }
 
         toast('Deposit received successfully', true)
@@ -73,7 +67,7 @@ function Deposit() {
             body={show ? (
                 <>
                     <div>{Memo.activeUser ? wholeMoney : 'There is no user logged in'}</div>
-                    <input placeholder="Deposit's amount" onChange={(e) => {
+                    <input className="form-control" placeholder="Deposit's amount" onChange={(e) => {
                         setDeposit(parseFloat(e.target.value))
                         disableButton(e.target.value)
                     }}></input>

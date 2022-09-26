@@ -11,22 +11,18 @@ function Withdraw() {
   const [disabled, setDisabled] = React.useState(true)
   const [wholeMoney, setWholeMoney] = React.useState(Memo.activeUser ? Memo.activeUser.balance : 0);
 
-  console.log('Memo.activeUser', Memo.activeUser)
   const withdrawFn = () => {
     if (isNaN(withdraw)) {
       toString(withdraw)
-      console.log('Error in submit: Withdraw value is not a number')
       setErrorMessage('*Withdraw value must be a number')
       return;
     }
     if (withdraw < 0) {
-      console.log('Error in submit: User is trying to withdraw negative value')
       setErrorMessage('*Withdraw value must be a positive number')
       return;
     }
 
     if (withdraw > Memo.activeUser.balance) {
-      console.log('You cannot withdraw this amount of money')
       setErrorMessage('*Withdraw value must be less than your total deposits')
       return;
     }
@@ -34,7 +30,6 @@ function Withdraw() {
       setErrorMessage('')
       Memo.activeUser.balance -= withdraw
       setWholeMoney(Memo.activeUser.balance)
-      console.log('newWithdraw', Memo.activeUser.balance)
 
       const record = {
         datetime: new Date().toISOString().substring(0, 10),
@@ -45,11 +40,9 @@ function Withdraw() {
         email: Memo.activeUser.email,
         uid: Memo.activeUser.uid
       }
-      console.log('record', record)
       Memo.records.push(record)
-      console.log('Memo.records', Memo.records)
     } else {
-      console.log('user must log in')
+      toast('You must log in', false)
     }
 
     toast('Withdraw received successfully', true)
@@ -79,7 +72,7 @@ function Withdraw() {
       body={show ? (
         <>
           <div>{Memo.activeUser ? wholeMoney : 'There is no user logged in'}</div>
-          <input placeholder="Withdraw's amount" onChange={(e) => {
+          <input className="form-control" placeholder="Withdraw's amount" onChange={(e) => {
             setWithdraw(parseFloat(e.target.value))
             disableButton(e.target.value)
           }}></input>

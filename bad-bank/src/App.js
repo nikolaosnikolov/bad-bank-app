@@ -1,4 +1,4 @@
-import { BrowserRouter, NavLink, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, NavLink, Routes, Route, Navigate, HashRouter } from 'react-router-dom';
 import AllData from "./components/alldata.jsx"
 import CreateAccount from "./components/createaccount.jsx"
 import Deposit from "./components/deposit.jsx"
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <UserContext.Provider value={Memo}>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand">BadBank</a>
@@ -35,32 +35,31 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li style={{ position: "relative" }} className="nav-item active">
-                  <NavLink id="home-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/home">Home</NavLink>
+                  <NavLink id="home-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/home">Home<span className="tooltiptext">Home page</span></NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink id="createaccount-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/createaccount">Create Account</NavLink>
+                <li style={{ position: "relative" }} className="nav-item">
+                  <NavLink id="createaccount-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/createaccount">Create Account<span className="tooltiptext">Create your account</span></NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink id="deposit-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/deposit">Deposit</NavLink>
+                <li style={{ position: "relative" }} className="nav-item">
+                  <NavLink id="deposit-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/deposit">Deposit<span className="tooltiptext">Deposit money</span></NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink id="withdraw-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/withdraw">Withdraw</NavLink>
+                <li style={{ position: "relative" }} className="nav-item">
+                  <NavLink id="withdraw-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/withdraw">Withdraw<span className="tooltiptext">Withdraw money</span></NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink id="alldata-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/alldata">AllData</NavLink>
+                <li style={{ position: "relative" }} className="nav-item">
+                  <NavLink id="alldata-nav" className={({ isActive }) => (isActive ? "link-active nav-link" : "link nav-link")} to="/alldata">AllData<span className="tooltiptext">See your submissions</span></NavLink>
                 </li>
               </ul>
-              {console.log('Memo.activeUser', Memo.activeUser)}
               <NavLink style={{
                 right: '0',
                 position: 'absolute',
                 fontSize: '1.1rem',
               }} className="nav-link" to="/login">Login</NavLink>
               <NavLink style={{
-                right: '50px',
+                right: '70px',
                 position: 'absolute',
                 fontSize: '1.1rem',
-              }} className="nav-link" to="/home" onClick={() => {
+              }} className="nav-link" to="/login" onClick={() => {
                 !Memo.activeUser
                   ? (() => { alert('There is no user logged in!') })()
                   : (() => {
@@ -88,19 +87,14 @@ function App() {
             </Routes>
           </div>
         </UserContext.Provider>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
 
 const Memo = {
-  users: [
-    // { uid: '2342-23423-23423-23', name: 'abel', email: 'abel@mit.edu', password: 'secret', balance: 100 },
-    // { uid: '435-34534-345-3-3', name: 'venny', email: 'venny', password: 'venny', balance: 100 },
-  ],
-  records: [
-    // { datetime: '2022-01-01T12:32:23Z0', uid: '435-34534-345-3-3', user: 'venny', action: 'deposit', amount: 333, balance: 433 }
-  ]
+  users: [],
+  records: []
 }
 
 const Fn = {
@@ -112,6 +106,3 @@ const Fn = {
 }
 
 export { App, Memo, Fn }
-
-
-// className="nav-link"
