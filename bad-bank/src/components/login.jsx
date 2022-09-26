@@ -1,6 +1,6 @@
-import React from "react" 
+import React from "react"
 import { Memo } from "../App.js";
-import {Card, UserContext} from "../context/context.jsx"
+import { Card, UserContext } from "../context/context.jsx"
 import toast from "./toast.js"
 
 function Login() {
@@ -34,7 +34,9 @@ function Login() {
     }
     return (
         <Card
-            bgcolor="secondary"
+            height="20rem"
+            width="20rem"
+            bgcolor='info'
             header="Login"
             status={status}
             body={show ? (

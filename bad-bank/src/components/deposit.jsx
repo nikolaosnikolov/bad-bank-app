@@ -1,6 +1,7 @@
 import React from 'react'
 import { Memo } from "../App.js";
 import {Card} from "../context/context.jsx"
+import toast from './toast.js';
 
 function Deposit() {
     const [show, setShow] = React.useState(true)
@@ -45,6 +46,7 @@ function Deposit() {
             console.log('user must log in')
         }
 
+        toast('Deposit received successfully', true)
         setShow(false)
     }
 
