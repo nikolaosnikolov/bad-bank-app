@@ -1,6 +1,7 @@
 import React from "react" 
 import { Memo } from "../App.js";
 import {Card, UserContext} from "../context/context.jsx"
+import toast from "./toast.js"
 
 function Login() {
     const [emailValue, setEmail] = React.useState(null)
@@ -21,9 +22,11 @@ function Login() {
             return
         }
 
+
         Memo.activeUser = user
         console.log('user data', Memo.activeUser)
         setShow(false)
+        toast('Login with success', false)
     }
 
     const clearForm = () => {
