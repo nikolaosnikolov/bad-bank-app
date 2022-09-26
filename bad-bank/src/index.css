@@ -293,7 +293,7 @@ body {
 }
 
 .cabutton {
-    background: burlywood;
+    background: burlywood !important;
 }
 
 #tick {

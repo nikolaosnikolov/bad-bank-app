@@ -71,7 +71,7 @@ function Withdraw() {
       status={status}
       body={show ? (
         <>
-          <div>{Memo.activeUser ? wholeMoney : 'There is no user logged in'}</div>
+          <div>{Memo.activeUser ? `Your actual amount is $${wholeMoney}` : 'There is no user logged in'}</div>
           <input className="form-control" placeholder="Withdraw's amount" onChange={(e) => {
             setWithdraw(parseFloat(e.target.value))
             disableButton(e.target.value)

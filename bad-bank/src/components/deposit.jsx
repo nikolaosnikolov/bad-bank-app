@@ -66,7 +66,7 @@ function Deposit() {
             status={status}
             body={show ? (
                 <>
-                    <div>{Memo.activeUser ? wholeMoney : 'There is no user logged in'}</div>
+                    <div>{Memo.activeUser ? `Your actual amount is $${wholeMoney}` : 'There is no user logged in'}</div>
                     <input className="form-control" placeholder="Deposit's amount" onChange={(e) => {
                         setDeposit(parseFloat(e.target.value))
                         disableButton(e.target.value)

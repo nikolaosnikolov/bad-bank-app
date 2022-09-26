@@ -24,7 +24,7 @@ function Login() {
 
 
         Memo.activeUser = user
-        toast('Login with success', true)
+        toast('Successful login', true)
         setShow(false)
     }
 
